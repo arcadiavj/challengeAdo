@@ -9,7 +9,6 @@ export class AuthService {
 
   login(email: string, password: string): Observable<boolean> {
     if (email === this.validUser.email && password === this.validUser.password) {
-      // Simulación de inicio de sesión exitoso
       localStorage.setItem('isLoggedIn', 'true');
       return of(true);
     } else {
