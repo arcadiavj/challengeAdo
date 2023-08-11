@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ProductService } from '../services/product.service'; // Asegúrate de importar el servicio de productos correcto
+import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,8 +13,8 @@ import { ProductModalComponent } from '../product-modal/product-modal.component'
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  products: any[] = []; // Aquí deberías usar la interfaz o clase de productos según corresponda
-  displayedColumns: string[] = ['id','title', 'category','price','detalle']; // Agrega más columnas si es necesario
+  products: any[] = [];
+  displayedColumns: string[] = ['id','title', 'category','price','detalle'];
   selectedCategory: string = '';
   productList: any[] = [];
   dataSource: MatTableDataSource<any>;
@@ -23,11 +23,11 @@ export class ProductListComponent implements OnInit {
 
 
   constructor(
-    private productService: ProductService, // Inyecta el servicio de productos
-    private modalService: NgbModal, // Importa MatDialog si planeas usar modales
+    private productService: ProductService,
+    private modalService: NgbModal,
     private router:Router,
     private authService:AuthService,
-    //private modalService: NgbModal
+
   ) {
     this.dataSource = new MatTableDataSource(this.productList);
   }
@@ -42,10 +42,10 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts().subscribe(
       (data: any) => {
         console.log(data);
-        this.products = data; // Asigna los productos obtenidos de la API
+        this.products = data;
       },
       error => {
-        console.log(error); // Maneja posibles errores
+        console.log(error);
       }
     );
   }
@@ -54,10 +54,10 @@ export class ProductListComponent implements OnInit {
     this.productService.getProductsByCategory(category).subscribe(
       (data: any) => {
         console.log(data);
-        this.products = data; // Asigna los productos obtenidos de la API
+        this.products = data;
       },
       error => {
-        console.log(error); // Maneja posibles errores
+        console.log(error);
       }
     );
   }
@@ -101,7 +101,7 @@ export class ProductListComponent implements OnInit {
 
 
   logout() {
-    this.authService.logout(); // Llama a tu función de cierre de sesión en AuthService
-    this.router.navigate(['login']); // Redirige a la página de inicio de sesión
+    this.authService.logout();
+    this.router.navigate(['login']);
   }
 }

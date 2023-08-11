@@ -7,10 +7,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./product-modal.component.css']
 })
 export class ProductModalComponent {
-  @Input() product: any; // Recibir datos del producto desde el componente que abre el modal
+  @Input() product: any;
 
   constructor(public activeModal: NgbActiveModal) {}
 
 
-  // Agrega más lógica aquí si es necesario
 }
